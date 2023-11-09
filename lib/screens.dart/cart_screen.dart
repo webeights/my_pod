@@ -1,34 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:my_pod/models/car.dart';
+import 'package:my_pod/data/dummy_data.dart';
 import 'package:my_pod/providers/cart_provider.dart';
 
-class CartScreen extends ConsumerStatefulWidget {
-  const CartScreen(this.cartList, {super.key});
-  final List<Car> cartList;
-
+class CartScreen extends ConsumerWidget {
+  const CartScreen({super.key});
   @override
-  CartScreenState createState() => CartScreenState();
-}
-
-class CartScreenState extends ConsumerState<CartScreen> {
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Cart'),
       ),
       body: Column(
         children: [
-          ...widget.cartList.map(
+          ...cars.map(
             (cartItem) => Dismissible(
               key: ValueKey(cartItem),
-              // onDismissed: (value) {
-              //   setState(() {
-              //     widget.cartList.remove(cartItem);
-              //   });
-              // },
-
               onDismissed: (value) =>
                   ref.read(cartNotifierProvider.notifier).addCars(cartItem),
               child: Card(

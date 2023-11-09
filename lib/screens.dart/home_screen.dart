@@ -20,10 +20,9 @@ class HomeScreen extends ConsumerWidget {
             onPressed: () async {
               var data = await Navigator.of(context).push<List<Car>>(
                 MaterialPageRoute(
-                  builder: (context) => CartScreen(cart),
+                  builder: (context) => const CartScreen(),
                 ),
               );
-              print('$data hereeeees the data');
             },
             icon: const Icon(Icons.shopping_cart),
           ),
