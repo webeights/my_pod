@@ -17,11 +17,9 @@ class HomeScreen extends ConsumerWidget {
         title: const Text('Cars'),
         actions: [
           IconButton(
-            onPressed: () async {
-              var data = await Navigator.of(context).push<List<Car>>(
-                MaterialPageRoute(
-                  builder: (context) => const CartScreen(),
-                ),
+            onPressed: () {
+              MaterialPageRoute(
+                builder: (context) => const CartScreen(),
               );
             },
             icon: const Icon(Icons.shopping_cart),
